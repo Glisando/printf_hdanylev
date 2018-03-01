@@ -76,7 +76,7 @@ void	two_b(unsigned int u)
 t_all	*ft_str_unicode(t_all *all, unsigned int u)
 {
 	all->len += 1;
-	if (u <= 0x007F)
+	if (u <= 0x007F || (MB_CUR_MAX == 1 && u <= 255))
 		write(1, &u, 1);
 	else if (u <= 0x07FF)
 	{
