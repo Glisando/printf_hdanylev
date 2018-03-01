@@ -27,8 +27,8 @@ int			ft_atoi_base(char *str, int base)
 	value = 0;
 	if (base <= 1 || base > 36)
 		return (0);
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		   || *str == '\r' || *str == '\v')
+	while (*str == ' ' || *str == '\t' || *str == '\n' ||
+			*str == '\f' || *str == '\r' || *str == '\v')
 		str++;
 	sign = (*str == '-') ? -1 : 1;
 	if (*str == '-' || *str == '+')

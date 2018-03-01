@@ -101,7 +101,7 @@ t_all	*ft_unicode(t_all *all)
 {
 	unsigned int	u;
 	unsigned int	*up;
-	int 			i;
+	int				i;
 
 	i = 0;
 	if (all->spc == 's' || all->spc == 'S')
