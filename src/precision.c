@@ -18,6 +18,8 @@ t_all	*ft_precision_num(t_all *all)
 
 	i = 0;
 	all->prec = all->lat[5].num - all->outlen;
+	if (all->lat[4].flag == 1)
+		all->lat[4].f(all);
 	if (all->lat[2].flag == 1)
 	{
 		if (all->output[0] == '-')
