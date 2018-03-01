@@ -17,8 +17,6 @@ t_all	*ft_precision_num(t_all *all)
 	int i;
 
 	i = 0;
-	if (all->lat[4].flag == 1)
-		all->lat[4].f(all);
 	all->prec = all->lat[5].num - all->outlen;
 	if (all->lat[2].flag == 1)
 	{

@@ -16,9 +16,7 @@ t_all	*ft_space(t_all *all)
 {
 	if (all->spc == 'd' || all->spc == 'i')
 	{
-		if (all->output[0] != '-' && all->lat[0].flag != 1 &&
-				all->lat[1].flag != 1 && all->lat[2].flag != 1 &&
-				all->lat[3].flag != 1)
+		if (all->output[0] != '-' && all->lat[3].flag != 1)
 		{
 			write(1, " ", 1);
 			all->len += 1;

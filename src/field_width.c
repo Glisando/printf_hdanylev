@@ -20,6 +20,8 @@ t_all	*ft_put_width_num(t_all *all)
 	width = all->lat[6].num - all->outlen - all->prec;
 	if (width < 0)
 		width = 0;
+	if (all->lat[4].flag == 1 && width == 0)
+		all->lat[4].f(all);
 	if (all->lat[2].flag == 1)
 	{
 		if (all->lat[0].flag == 1)
