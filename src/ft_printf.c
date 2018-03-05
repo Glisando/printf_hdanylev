@@ -112,3 +112,19 @@ int		ft_printf(const char *fmt, ...)
 	va_end(all->conv);
 	return (len + all->len);
 }
+/*
+int		main(void)
+{
+	int		a;
+	char	*str;
+	wchar_t c;
+
+//	c = (wchar_t *) 0x10491;
+	setlocale(LC_ALL, "");
+	str = "kukushka";
+	a = -129;
+	printf("%d\n", ft_printf("%#2.5o\n", 12));
+	printf("%d\n", printf("%#2.5o\n", 12));
+	return (0);
+}
+*/

@@ -58,7 +58,8 @@ t_all	*ft_hash(t_all *all)
 	else if ((all->spc == 'o' || all->spc == 'O') && all->printed != 1)
 	{
 		write(1, "0", 1);
-		ft_output(all);
+		if (all->lat[1].flag != 1 && all->lat[2].flag == 1)
+			ft_output(all);
 		all->len += 1;
 	}
 	return (all);
