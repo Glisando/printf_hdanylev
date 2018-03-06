@@ -37,15 +37,15 @@ t_all	*ft_put_width_num(t_all *all)
 	int		width;
 
 	width = all->lat[6].num - all->outlen - all->prec;
-	if (width < 0)
-		width = 0;
+	width = width <= 0 ? 0 : width;
 	if (all->lat[4].flag == 1 && width == 0)
 		all->lat[4].f(all);
 	if (all->lat[2].flag == 1)
 		ft_put_num_minus(all, width);
 	else
 	{
-		if (all->lat[1].flag == 1 && all->lat[0].flag == 1)
+		if (all->lat[1].flag == 1 && all->lat[0].flag == 1 &&
+				width > 0 && all->lat[5].flag != 1)
 			all->lat[0].f(all);
 		ch = ft_zero(all);
 		all->len += width;
@@ -54,7 +54,7 @@ t_all	*ft_put_width_num(t_all *all)
 			write(1, &ch, 1);
 			width--;
 		}
-		if (all->lat[0].flag == 1 && all->lat[1].flag != 1)
+		if (all->lat[0].flag == 1 && all->flag_was != 1)
 			all->lat[0].f(all);
 	}
 	return (all);

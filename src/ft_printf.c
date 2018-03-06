@@ -117,14 +117,12 @@ int		main(void)
 {
 	int		a;
 	char	*str;
-	wchar_t c;
 
-//	c = (wchar_t *) 0x10491;
 	setlocale(LC_ALL, "");
 	str = "kukushka";
 	a = -129;
-	printf("%d\n", ft_printf("%#2.5o\n", 12));
-	printf("%d\n", printf("%#2.5o\n", 12));
+	printf("%d\n", ft_printf("%#2x\n", 123));
+	printf("%d\n", printf("%#02x\n", 123));
 	return (0);
 }
 */

@@ -60,6 +60,7 @@ int		ft_s(t_all *all)
 t_all	*ft_count_output(t_all *all)
 {
 	all->outlen = ft_strlen(all->output);
+	all->lennumonly = all->outlen;
 	if (all->lat[5].flag == 1 && all->lat[5].num == 0 && all->output[0] == '0')
 	{
 		if (all->spc != 'o' || all->lat[0].flag != 1)

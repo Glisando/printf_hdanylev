@@ -35,7 +35,9 @@ typedef struct		s_all
 	int				printed;
 	int				ret;
 	int				outlen;
-	int				prec;
+	int             lennumonly;
+    int				prec;
+	int             flag_was;
 }					t_all;
 
 typedef struct		s_lat

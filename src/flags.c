@@ -51,9 +51,11 @@ t_all	*ft_hash(t_all *all)
 			write(1, "0X", 2);
 		else
 			write(1, "0x", 2);
-		if (all->lat[1].flag != 1 || all->lat[2].flag == 1)
+		if ((all->lat[1].flag != 1 || all->lat[2].flag == 1) &&
+				all->lat[5].flag != 1)
 			ft_output(all);
 		all->len += 2;
+		all->flag_was = 1;
 	}
 	else if ((all->spc == 'o' || all->spc == 'O') && all->printed != 1)
 	{
@@ -61,6 +63,7 @@ t_all	*ft_hash(t_all *all)
 		if (all->lat[1].flag != 1 && all->lat[2].flag == 1)
 			ft_output(all);
 		all->len += 1;
+		all->flag_was = 1;
 	}
 	return (all);
 }

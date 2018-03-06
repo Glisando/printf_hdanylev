@@ -27,43 +27,52 @@ t_all	*ft_precision_num_minus(t_all *all)
 	all->prec = all->prec < 0 ? 0 : all->prec;
 	all->len += all->prec;
 	i = all->prec;
-	while (i > 0)
+    if (all->lat[0].flag == 1 && all->lat[1].flag != 1)
+        all->lat[0].f(all);
+    while (i > 0)
 	{
 		write(1, "0", 1);
 		i--;
 	}
 	if (all->lat[6].flag == 1)
 		all->lat[6].f(all);
-	if (all->lat[0].flag == 1 && all->lat[1].flag != 1)
+	return (all);
+}
+
+t_all   *ft_prec_num_2(t_all *all)
+{
+	if (all->output[0] == '-')
+		all->prec++;
+	all->prec = all->prec < 0 ? 0 : all->prec;
+	if (all->lat[6].flag == 1)
+		all->lat[6].f(all);
+	if (all->output[0] == '-')
+		write(1, "-", 1);
+	else if (all->lat[3].flag == 1)
+		all->lat[3].f(all);
+	all->len += all->prec;
+	if (all->lat[0].flag == 1 && all->lat[1].flag != 1 &&
+			all->lat[6].flag != 1)
 		all->lat[0].f(all);
 	return (all);
 }
 
 t_all	*ft_precision_num(t_all *all)
 {
-	all->prec = all->lat[5].num - all->outlen;
+	if (all->spc == 'x')
+		all->prec = all->lat[5].num - all->lennumonly;
+	else
+		all->prec = all->lat[5].num - all->outlen;
 	if (all->lat[2].flag == 1)
 		ft_precision_num_minus(all);
 	else
 	{
-		if (all->output[0] == '-')
-			all->prec++;
-        all->prec = all->prec < 0 ? 0 : all->prec;
-		if (all->lat[6].flag == 1)
-			all->lat[6].f(all);
-		if (all->output[0] == '-')
-			write(1, "-", 1);
-		else if (all->lat[3].flag == 1)
-			all->lat[3].f(all);
-		all->len += all->prec;
+		ft_prec_num_2(all);
 		while (all->prec > 0)
 		{
 			write(1, "0", 1);
 			all->prec--;
 		}
-		if (all->lat[0].flag == 1 && all->lat[1].flag != 1 &&
-                all->lat[6].flag != 1)
-			all->lat[0].f(all);
 	}
 	return (all);
 }
