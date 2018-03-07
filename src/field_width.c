@@ -85,11 +85,8 @@ t_all	*ft_put_width_str(t_all *all)
 
 t_all	*ft_field_width(t_all *all)
 {
-	if (all->spc == 'x' || all->spc == 'o' ||
-			all->spc == 'd' || all->spc == 'i' ||
-			all->spc == 'u' || all->spc == 'c' || all->spc == '%')
-		return (ft_put_width_num(all));
 	if (all->spc == 's')
 		return (ft_put_width_str(all));
-	return (0);
+	else
+		return (ft_put_width_num(all));
 }

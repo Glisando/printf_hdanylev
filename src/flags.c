@@ -14,7 +14,7 @@
 
 t_all	*ft_space(t_all *all)
 {
-	if (all->spc == 'd' || all->spc == 'i')
+	if (all->spc == 'd' || all->spc == 'i'|| all->spc == 'D')
 	{
 		if (all->output[0] != '-' && all->lat[3].flag != 1)
 		{
@@ -27,7 +27,7 @@ t_all	*ft_space(t_all *all)
 
 t_all	*ft_plus(t_all *all)
 {
-	if (all->spc == 'd' || all->spc == 'i')
+	if (all->spc == 'd' || all->spc == 'i' || all->spc == 'D')
 	{
 		if (all->output[0] != '-')
 		{
@@ -43,9 +43,10 @@ t_all	*ft_plus(t_all *all)
 
 t_all	*ft_hash(t_all *all)
 {
-	if (all->output[0] == '0')
+	if (all->output[0] == '0' && all->spc != 'p')
 		return (all);
-	if ((all->spc == 'x' || all->spc == 'X') && all->printed != 1)
+	if ((all->spc == 'x' || all->spc == 'X' || all->spc == 'p') &&
+			all->printed != 1)
 	{
 		if (all->spc == 'X')
 			write(1, "0X", 2);

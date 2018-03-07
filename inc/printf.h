@@ -29,6 +29,7 @@ typedef struct		s_all
 	int				len;
 	long			l;
 	unsigned long	ul;
+	unsigned int	*up;
 	char			*output;
 	int				x;
 	char			spc;

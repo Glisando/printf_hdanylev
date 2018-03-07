@@ -15,7 +15,7 @@
 t_all	*ft_check_lat2(t_all *all)
 {
 	all->ret = 0;
-	if (all->lat[5].flag == 1)
+	if (all->lat[5].flag == 1 && all->output[0])
 		all->lat[5].f(all);
 	else if (all->lat[6].flag == 1)
 		all->lat[6].f(all);

@@ -100,18 +100,22 @@ t_all	*ft_str_unicode(t_all *all, unsigned int u)
 t_all	*ft_unicode(t_all *all)
 {
 	unsigned int	u;
-	unsigned int	*up;
 	int				i;
 
 	i = 0;
 	if (all->spc == 's' || all->spc == 'S')
 	{
-		up = va_arg(all->conv, unsigned int*);
-		while (up[i])
+		all->up = va_arg(all->conv, unsigned int*);
+		if (all->up)
 		{
-			ft_str_unicode(all, up[i]);
-			i++;
+			while (all->up[i])
+			{
+				ft_str_unicode(all, all->up[i]);
+				i++;
+			}
 		}
+		else
+			return(ft_output(all));
 	}
 	else
 	{

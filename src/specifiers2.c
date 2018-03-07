@@ -16,19 +16,17 @@ int		ft_p(t_all *all)
 {
 	intptr_t	*p;
 
-	ft_check_mod2(all);
-	if (all->ret == -22)
+	p = va_arg(all->conv, void*);
+	all->output = ft_itoa_base((unsigned long)p, 16);
+	all->lat[0].flag = 1;
+	ft_count_output(all);
+	ft_check_lat2(all);
+	if (all->ret == -42)
 	{
-		p = va_arg(all->conv, void*);
-		all->output = ft_itoa_base((unsigned long)p, 16);
-		ft_count_output(all);
-		ft_check_lat2(all);
-		if (all->ret == -42)
-		{
-			write(1, "0x", 2);
-			ft_output(all);
-			return (all->len + 2);
-		}
+		write(1, "0x", 2);
+		ft_output(all);
+		all->printed = 1;
+		return (all->len + 2);
 	}
 	if (all->printed != 1)
 		ft_output(all);
@@ -71,15 +69,14 @@ t_all	*ft_count_output(t_all *all)
 		all->outlen = 1;
 	if (all->lat[0].flag == 1)
 	{
-		if (all->spc == 'x' || all->spc == 'X')
+		if (all->spc == 'x' || all->spc == 'X' || all->spc == 'p')
 			all->outlen += 2;
 		else if (all->spc == 'o' || all->spc == 'O')
 			all->outlen += 1;
 	}
 	if (all->lat[3].flag == 1)
-	{
-		if ((all->spc == 'd' || all->spc == 'i') && all->output[0] != '-')
+		if ((all->spc == 'D' || all->spc == 'd' || all->spc == 'i')
+			&& all->output[0] != '-')
 			all->lat[6].num -= 1;
-	}
 	return (all);
 }

@@ -59,7 +59,7 @@ t_all	*ft_prec_num_2(t_all *all)
 
 t_all	*ft_precision_num(t_all *all)
 {
-	if (all->spc == 'x')
+	if (all->spc == 'x' || all->spc == 'X' || all->spc == 'p')
 		all->prec = all->lat[5].num - all->lennumonly;
 	else
 		all->prec = all->lat[5].num - all->outlen;
@@ -117,8 +117,6 @@ t_all	*ft_precision(t_all *all)
 		}
 		return (all);
 	}
-	else if (all->spc == 'd' || all->spc == 'i' || all->spc == 'u' ||
-			all->spc == 'x' || all->spc == 'o')
+	else
 		return (ft_precision_num(all));
-	return (0);
 }

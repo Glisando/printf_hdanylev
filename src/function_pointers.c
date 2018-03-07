@@ -25,6 +25,7 @@ t_all	*ft_zero_flag(t_all *all)
 	i = -1;
 	while (++i < 7)
 		all->lat[i].flag = 0;
+	all->ret = 0;
 	all->printed = 0;
 	all->flag_stop = 0;
 	all->flag_was = 0;
