@@ -14,12 +14,13 @@
 
 t_all	*ft_space(t_all *all)
 {
-	if (all->spc == 'd' || all->spc == 'i'|| all->spc == 'D')
+	if (all->spc == 'd' || all->spc == 'i' || all->spc == 'D')
 	{
 		if (all->output[0] != '-' && all->lat[3].flag != 1)
 		{
 			write(1, " ", 1);
 			all->len += 1;
+			all->width--;
 		}
 	}
 	return (all);

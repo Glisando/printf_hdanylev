@@ -24,12 +24,12 @@ typedef struct		s_all
 	struct s_capa	*capa;
 	struct s_lat	*lat;
 	va_list			conv;
-	size_t			size;
 	int				flag_stop;
 	int				len;
 	long			l;
 	unsigned long	ul;
 	unsigned int	*up;
+	int				width;
 	char			*output;
 	int				x;
 	char			spc;

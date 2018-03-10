@@ -14,15 +14,14 @@
 
 t_all	*ft_output(t_all *all)
 {
-	all->size = ft_strlen(all->output);
 	if (all->lat[5].flag == 1 && all->output[0] == '-')
-		write(1, &all->output[1], all->size - 1);
+		write(1, &all->output[1], all->lennumonly - 1);
 	else if (all->lat[1].flag == 1 && all->lat[2].flag != 1 &&
 			all->output[0] == '-')
-		write(1, &all->output[1], all->size - 1);
+		write(1, &all->output[1], all->lennumonly - 1);
 	else if (all->spc == 'c' && all->output[0] == '\0')
 	{
-		all->size++;
+		all->lennumonly++;
 		write(1, "\0", 1);
 	}
 	else if (all->spc == 'S' && all->up == NULL)
@@ -31,8 +30,8 @@ t_all	*ft_output(t_all *all)
 		all->len += 6;
 	}
 	else if (all->output)
-		write(1, all->output, all->size);
-	all->len += (int)all->size;
+		write(1, all->output, all->lennumonly);
+	all->len += all->lennumonly;
 	all->printed = 1;
 	return (all);
 }

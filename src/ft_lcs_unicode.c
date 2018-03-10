@@ -115,7 +115,7 @@ t_all	*ft_unicode(t_all *all)
 			}
 		}
 		else
-			return(ft_output(all));
+			return (ft_output(all));
 	}
 	else
 	{
