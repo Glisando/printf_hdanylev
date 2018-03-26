@@ -153,5 +153,6 @@ char				*ft_strdup(const char *str);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strrchr(const char *str, int c);
 char				**ft_strsplit(const char *str, char c);
+void				ft_swap(int *a, int *b);
 
 #endif
