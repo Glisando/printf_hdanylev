@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   strrchr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdanylev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 19:07:30 by hdanylev          #+#    #+#             */
-/*   Updated: 2018/03/19 18:28:17 by hdanylev         ###   ########.fr       */
+/*   Created: 2017/10/27 19:51:20 by hdanylev          #+#    #+#             */
+/*   Updated: 2017/10/31 12:16:41 by hdanylev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/printf.h"
 
-void	ft_putchar(char c)
+char	*ft_strrchr(const char *str, int c)
 {
-	write(1, &c, 1);
+	int		i;
+	char	ch;
+
+	ch = c;
+	i = 0;
+	while (str[i])
+		i++;
+	while (i >= 0)
+	{
+		if (str[i] == ch)
+		{
+			return ((char*)&str[i]);
+		}
+		i--;
+	}
+	return (0);
 }

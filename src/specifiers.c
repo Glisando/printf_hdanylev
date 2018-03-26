@@ -20,8 +20,9 @@ int		ft_c(t_all *all)
 	if (all->ret == -22)
 	{
 		c = (unsigned char)va_arg(all->conv, int);
-		all->output = (char*)malloc(sizeof(char) * 1);
+		all->output = (char*)malloc(sizeof(char) * 2);
 		all->output[0] = c;
+		all->output[1] = '\0';
 		ft_count_output(all);
 		ft_check_lat2(all);
 		if (all->ret == -42)

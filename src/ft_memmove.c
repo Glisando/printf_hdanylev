@@ -1,18 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdanylev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 19:07:30 by hdanylev          #+#    #+#             */
-/*   Updated: 2018/03/19 18:28:17 by hdanylev         ###   ########.fr       */
+/*   Created: 2017/10/26 19:26:29 by hdanylev          #+#    #+#             */
+/*   Updated: 2017/11/06 14:45:39 by hdanylev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/printf.h"
 
-void	ft_putchar(char c)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	write(1, &c, 1);
+	int			zero;
+	size_t		t;
+	char		*arr;
+	const char	*data;
+
+	zero = n - 1;
+	t = 0;
+	arr = (char*)dst;
+	data = (const char*)src;
+	if (dst > src)
+	{
+		while (zero >= 0)
+		{
+			arr[zero] = data[zero];
+			zero--;
+		}
+		return (arr);
+	}
+	while (t < n)
+	{
+		arr[t] = data[t];
+		t++;
+	}
+	return (arr);
 }

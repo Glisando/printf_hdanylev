@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdanylev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 19:07:30 by hdanylev          #+#    #+#             */
-/*   Updated: 2018/03/19 18:28:17 by hdanylev         ###   ########.fr       */
+/*   Created: 2017/10/26 13:50:12 by hdanylev          #+#    #+#             */
+/*   Updated: 2017/10/31 16:56:28 by hdanylev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/printf.h"
 
-void	ft_putchar(char c)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	write(1, &c, 1);
+	size_t		t;
+	char		*arr;
+	const char	*data;
+
+	t = 0;
+	arr = (char*)dst;
+	data = (const char*)src;
+	while (t < n)
+	{
+		arr[t] = data[t];
+		t++;
+	}
+	return (arr);
 }

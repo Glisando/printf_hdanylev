@@ -35,11 +35,15 @@ int		ft_p(t_all *all)
 
 int		ft_s(t_all *all)
 {
+	char *str;
+
 	ft_check_mod2(all);
 	if (all->ret == -22)
 	{
-		if (!(all->output = va_arg(all->conv, char*)))
-			all->output = "(null)";
+		str = va_arg(all->conv, char*);
+		all->output = ft_strdup(str);
+		if (all->output == NULL)
+			all->output = ft_strdup("(null)");
 		ft_count_output(all);
 		ft_check_lat2(all);
 		if (all->ret == -42)

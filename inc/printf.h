@@ -12,11 +12,21 @@
 
 #ifndef PRINTF_H
 # define PRINTF_H
+
 # include <locale.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <fcntl.h>
+# define BUFF_SIZE 2048
+
+typedef struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 
 typedef struct		s_all
 {
@@ -111,5 +121,37 @@ t_all				*ft_read_lol(t_all *all, char *fmt);
 t_all				*functions_pointers_capa(t_all *all);
 t_all				*functions_pointers_mod(t_all *all);
 t_all				*functions_pointers_flag(t_all *all);
+t_all				*ft_null(t_all *all);
+void				ft_lstdelone(t_list **alst, void(*del)(void*, size_t));
+void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
+void				ft_lstadd(t_list **alst, t_list *new);
+t_list				*ft_lstnew(void const *content, size_t content_size);
+char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strjoin(const char *s1, const char *s2);
+void				ft_putendl_fd(char const *str, int fd);
+void				ft_putnbr(int nb);
+void				ft_putnbr_fd(int nb, int fd);
+void				ft_putchar(char c);
+void				ft_putchar_fd(char c, int fd);
+void				ft_strdel(char **str);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+int					get_next_line(const int fd, char **line);
+void				*ft_memmove(void *dst, const void *src, size_t n);
+void				*ft_memset(void *b, int c, size_t len);
+void				*ft_memalloc(size_t size);
+void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void				*ft_memchr(const void *src, int c, size_t n);
+void				ft_memdel(void **str);
+void				ft_putstr(char const *str);
+void				ft_putstr_fd(char const *str, int fd);
+void				ft_bzero(void *b, size_t len);
+int					ft_memcmp(const void *s1, const void *s2, size_t n);
+int					ft_strncmp(char *s1, char *s2, size_t len);
+char				*ft_strstr(const char *tmp, const char *srch);
+char				*ft_strchr(const char *str, int c);
+char				*ft_strdup(const char *str);
+char				*ft_strncpy(char *dst, const char *src, size_t len);
+char				*ft_strrchr(const char *str, int c);
+char				**ft_strsplit(const char *str, char c);
 
 #endif

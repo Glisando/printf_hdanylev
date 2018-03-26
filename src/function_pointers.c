@@ -12,6 +12,25 @@
 
 #include "../inc/printf.h"
 
+t_all	*ft_null(t_all *all)
+{
+	all->len = 0;
+	all->l = 0;
+	all->ul = 0;
+	all->ret = 0;
+	all->printed = 0;
+	all->flag_stop = 0;
+	all->flag_was = 0;
+	all->lennumonly = 0;
+	all->outlen = 0;
+	all->prec = 0;
+	all->x = 0;
+	all->width = 0;
+	all->output = NULL;
+	all->up = NULL;
+	return (all);
+}
+
 t_all	*ft_zero_flag(t_all *all)
 {
 	int i;

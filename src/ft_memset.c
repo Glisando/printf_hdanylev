@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdanylev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 19:07:30 by hdanylev          #+#    #+#             */
-/*   Updated: 2018/03/19 18:28:17 by hdanylev         ###   ########.fr       */
+/*   Created: 2017/10/26 10:54:17 by hdanylev          #+#    #+#             */
+/*   Updated: 2017/10/31 15:25:58 by hdanylev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/printf.h"
 
-void	ft_putchar(char c)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	write(1, &c, 1);
+	size_t			i;
+	char			*arr;
+	unsigned char	tmp;
+
+	arr = (char*)b;
+	tmp = (unsigned char)c;
+	i = 0;
+	while (i < len)
+	{
+		arr[i] = tmp;
+		i++;
+	}
+	return (arr);
 }

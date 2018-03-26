@@ -12,6 +12,14 @@
 
 #include "../inc/printf.h"
 
+void	free_all(t_all *all)
+{
+	free(all->capa);
+	free(all->mod);
+	free(all->lat);
+	free(all);
+}
+
 t_all	*write_flags(t_all *all)
 {
 	const char	*spc;
@@ -36,15 +44,13 @@ t_all	*write_flags(t_all *all)
 	{
 		all->lat[i].lat = lat[i];
 		all->lat[i].flag = 0;
+		all->lat[i].num = 0;
 	}
 	return (all);
 }
 
-t_all	*build_struct(void)
+t_all	*build_struct(t_all *all)
 {
-	t_all		*all;
-
-	all = (t_all*)malloc(sizeof(t_all));
 	all->capa = (t_capa*)malloc(sizeof(t_capa) * 14);
 	all->mod = (t_mod*)malloc(sizeof(t_mod) * 10);
 	all->lat = (t_lat*)malloc(sizeof(t_lat) * 7);
@@ -52,7 +58,7 @@ t_all	*build_struct(void)
 	functions_pointers_mod(all);
 	functions_pointers_flag(all);
 	write_flags(all);
-	all->printed = 0;
+	ft_null(all);
 	return (all);
 }
 
@@ -90,10 +96,11 @@ int		ft_printf(const char *fmt, ...)
 	int		len;
 	t_all	*all;
 
-	all = build_struct();
-	va_start(all->conv, fmt);
+	all = (t_all*)malloc(sizeof(t_all));
+	build_struct(all);
 	i = -1;
 	len = 0;
+	va_start(all->conv, fmt);
 	while (fmt[++i])
 	{
 		if (fmt[i] == '%' && fmt[i + 1] != '%')
@@ -103,12 +110,11 @@ int		ft_printf(const char *fmt, ...)
 		}
 		else if (fmt[i] == '%' && fmt[i + 1] == '%' && i++ && len++)
 			write(1, &fmt[i], 1);
-		else
-		{
-			len++;
+		else if (len += 1)
 			write(1, &fmt[i], 1);
-		}
 	}
 	va_end(all->conv);
-	return (len + all->len);
+	len += all->len;
+	free_all(all);
+	return (len);
 }

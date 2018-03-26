@@ -33,5 +33,6 @@ t_all	*ft_output(t_all *all)
 		write(1, all->output, all->lennumonly);
 	all->len += all->lennumonly;
 	all->printed = 1;
+	free(all->output);
 	return (all);
 }
